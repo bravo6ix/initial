@@ -11,6 +11,17 @@ $ pip install initial
 ## Usage
 
 - TODO
+'initial' can be used to count words in a text file and plot results as follows:
+```python
+from initial.initial import count_words
+from initial.plotting import plot_words
+import matplotlib.pyplot as plt
+
+file_path = "text" # path to your file
+counts = count_words(file_path)
+fig = plot_words(counts, n=10)
+plt.shoq()
+```
 
 ## Contributing
 
