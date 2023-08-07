@@ -10,7 +10,7 @@ $ pip install initial
 
 ## Usage
 
-'initial' can be used to count words in a text file and plot results as follows:
+`initial` can be used to count words in a text file and plot results as follows:
 ```python
 from initial.initial import count_words
 from initial.plotting import plot_words
