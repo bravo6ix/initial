@@ -4,6 +4,8 @@
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+import sphinx_rtd_theme
+
 # -- Project information -----------------------------------------------------
 
 project = u"initial"
@@ -20,8 +22,9 @@ extensions = [
     "autoapi.extension",
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
+    "sphinx_rtd_theme",
 ]
-autoapi_dirs = ["../src"] 
+autoapi_dirs = ["../src"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -34,3 +37,5 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # a list of builtin themes.
 #
 html_theme = "sphinx_rtd_theme"
+
+master_doc = "index"
