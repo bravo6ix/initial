@@ -1,4 +1,3 @@
-py-pkgs-cookiecutter
 myst-nb
 sphinx-autoapi
 sphinx-rtd-theme
