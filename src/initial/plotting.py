@@ -9,3 +9,4 @@ def plot_words(word_counts, n=10):
     plt.xlabel("Word")
     plt.ylabel("Count")
     return fig
+
