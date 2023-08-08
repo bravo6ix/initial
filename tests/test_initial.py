@@ -1,6 +1,8 @@
 from initial import initial
 from collections import Counter
 from initial.initial import count_words
+from initial.plotting import plot_words
+import matplotlib
 
 count_words("zen.txt")
 print(count_words("zen.txt"))
@@ -14,7 +16,7 @@ def test_count_words():
     actual = count_words("tests/einstein.txt")
     assert actual == expected, "Einstein quote counted incorrectly!"
 
-def test_plot_words():  
+def test_plot_words():
     """Test plotting of word counts."""
     counts = Counter({'insanity': 1, 'is': 1, 'doing': 1,
                       'the': 1, 'same': 1, 'thing': 1,
