@@ -47,25 +47,25 @@ jobs:
     # Define job steps
     steps:
       - name: Set up Python 3.9
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: "3.9"
 
-      # - name: Install pypa/build
-      #   run: >-
-      #     python3 -m
-      #     pip install
-      #     build
-      #     --user
+      - name: Install pypa/build
+        run: >-
+          python3 -m
+          pip install
+          build
+          --user
 
-      # - name: Install dependencies
-      #   run: |
-      #     python -m pip install --upgrade pip
-      #     pip install -U setuptools wheel twine
-      #     python setup.py sdist bdist_wheel
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -U setuptools wheel twine
+          python setup.py sdist bdist_wheel
 
       - name: Check-out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -83,6 +83,18 @@ jobs:
             git config user.name github-actions
             git config user.email github-actions@github.com
             poetry run semantic-release publish
+
+      - name: Publish distribution 📦 to Test PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          repository-url: https://test.pypi.org/legacy/
+
+      - name: Publish distribution 📦 to PyPI
+        if: startsWith(github.ref, 'refs/tags')
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
 
       - name: Publish to TestPyPI
         uses: pypa/gh-action-pypi-publish@release/v1
