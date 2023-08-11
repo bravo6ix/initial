@@ -9,7 +9,7 @@ jobs:
 
     # Define job steps
     steps:
-      - name: Set up Python 3.9
+      - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: "3.9"
@@ -43,9 +43,9 @@ jobs:
 
     # Set up operating system
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: write
+    # permissions:
+    #   id-token: write
+    #   contents: write
 
     # Define job steps
     steps:
@@ -54,12 +54,12 @@ jobs:
         with:
           python-version: "3.9"
 
-      - name: Install pypa/build
-        run: >-
-          python3 -m
-          pip install
-          build
-          --user
+      # - name: Install pypa/build
+      #   run: >-
+      #     python3 -m
+      #     pip install
+      #     build
+      #     --user
 
       # - name: Install dependencies
       #   run: |
@@ -68,7 +68,7 @@ jobs:
       #     python setup.py sdist bdist_wheel
 
       - name: Check-out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
@@ -108,7 +108,7 @@ jobs:
           user: __token__
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
           repository-url: https://test.pypi.org/legacy/
-          verbose: true
+          # verbose: true
 
       - name: Test install from TestPyPI
         run: |
