@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "initial"
-version = "0.2.0"
+version = "0.2.2"
 description = "For testing ws python package."
 authors = ["Ming"]
 license = "MIT"
